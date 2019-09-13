@@ -8,6 +8,6 @@ edition = "2018"
 
 [dependencies]
 actix-web = "1.0.5"
-rust-s3 = "0.18.0-beta"
+rust-s3 = "0.18.0-beta2"
 actix-http = "0.2.9"
 futures = "0.1.28"
