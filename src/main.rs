@@ -33,12 +33,11 @@ fn index_single() -> impl Future<Item = HttpResponse, Error = Error> {
     fut_single.map(|td| HttpResponse::Ok().body(td))
 }
 
-/*
 fn index_list() -> impl Future<Item = HttpResponse, Error = Error> {
     let bucket = gimme_a_bucket();
 
     bucket
-        .list_all_async("/".to_owned(), Some("/".to_owned()))
+        .list_all_async("".to_owned(), Some("/".to_owned()))
         .map_err(|_e| {
             // Usability comment: it seems that _e does not impl any traits that
             // would be useful for formatting an error message such as
@@ -59,8 +58,9 @@ fn index_list() -> impl Future<Item = HttpResponse, Error = Error> {
 } // */
 fn main() {
     HttpServer::new(|| {
-        App::new().route("/single", web::get().to_async(index_single))
-        //.route("/list", web::get().to_async(index_list)) // */
+        App::new()
+            .route("/single", web::get().to_async(index_single))
+            .route("/list", web::get().to_async(index_list))
     })
     .bind("127.0.0.1:8088")
     .unwrap()

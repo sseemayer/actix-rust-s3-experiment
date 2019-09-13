@@ -1,0 +1,3 @@
+[submodule "lib/rust-s3"]
+	path = lib/rust-s3
+	url = git@github.com:sseemayer/rust-s3.git
